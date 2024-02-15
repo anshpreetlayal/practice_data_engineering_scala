@@ -12,3 +12,25 @@ def factorial(n: Int): Int = {  // Calculates the factorial of a number
 }
 val fact5 = factorial(5)  // Computes the factorial of 5
 
+
+// Nesting and Lexical Scope
+def outerFunction(x: Int): Int = {  // Defines an outer function
+  def innerFunction(y: Int): Int = x + y  // Defines an inner function
+  innerFunction(5)  // Calls the inner function
+}
+val nestedResult = outerFunction(10)  // Calls the outer function with parameter 10
+
+// Call by Name & Call by Value
+def callByValue(x: Int): Unit = {  // Defines a function with call by value
+  println("x1 = " + x)  // Prints the value of x
+  println("x2 = " + x)  // Prints the value of x again
+}
+
+def callByName(x: => Int): Unit = {  // Defines a function with call by name
+  println("x1 = " + x)  // Prints the value of x
+  println("x2 = " + x)  // Prints the value of x again
+}
+
+callByValue({ println("evaluating"); 10 }) // Calls the callByValue function with a block of code
+callByName({ println("evaluating"); 10 })  // Calls the callByName function with a block of code
+
