@@ -34,3 +34,11 @@ def callByName(x: => Int): Unit = {  // Defines a function with call by name
 callByValue({ println("evaluating"); 10 }) // Calls the callByValue function with a block of code
 callByName({ println("evaluating"); 10 })  // Calls the callByName function with a block of code
 
+// Main entry point
+def main(args: Array[String]): Unit = {  // Main entry point of the program
+  println(sum)            // Output: 7
+  println(isEven)         // Output: false
+  println(result)         // Output: greater than 5
+  println(fact5)          // Output: 120
+  println(nestedResult)   // Output: 15
+}
