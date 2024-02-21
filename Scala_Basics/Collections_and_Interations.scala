@@ -44,4 +44,6 @@ object CollectionsIterationsExample2 extends App {
     case Nil => println("Empty list") // Matching empty list
   }
 
+
+  
 }
