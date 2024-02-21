@@ -44,6 +44,32 @@ object CollectionsIterationsExample2 extends App {
     case Nil => println("Empty list") // Matching empty list
   }
 
+   // Pure data (Algebraic data types)
+  sealed trait Tree[A]
+  case class Leaf[A](value: A) extends Tree[A]
+  case class Branch[A](left: Tree[A], right: Tree[A]) extends Tree[A]
+
+  val tree: Tree[Int] = Branch(Branch(Leaf(1), Leaf(2)), Leaf(3))
+
+  // Enums (domain modeling)
+  sealed trait DayOfWeek
+  case object Monday extends DayOfWeek
+  case object Tuesday extends DayOfWeek
+  // ... Define other days
+
+  val today: DayOfWeek = Monday
+
+  // Subtyping, generics, bounds, variance
+  trait Animal
+  class Dog extends Animal
+  class Cat extends Animal
+
+  class Cage[A <: Animal](animal: A) // Using type bounds
+
+  val dogCage = new Cage(new Dog)
+  // val stringCage = new Cage("not an animal") // Error: String does not conform to type bound
 
   
+
+
 }
