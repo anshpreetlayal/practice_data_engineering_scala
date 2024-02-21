@@ -69,7 +69,32 @@ object CollectionsIterationsExample2 extends App {
   val dogCage = new Cage(new Dog)
   // val stringCage = new Cage("not an animal") // Error: String does not conform to type bound
 
-  
+ // Liskov substitution principle
+  def printAnimalName(animal: Animal): Unit = println(animal.getClass.getSimpleName)
+
+  val animal: Animal = new Dog
+  printAnimalName(animal)
+
+  // Pair, Tuples and generic methods
+  val pair: (Int, String) = (1, "one")
+  val triple: (Int, String, Boolean) = (1, "one", true)
+
+  def printTuple[T1, T2](tuple: (T1, T2)): Unit = println(s"First: ${tuple._1}, Second: ${tuple._2}")
+
+  printTuple(pair)
+  printTuple(triple)
+
+  // Higher-order list functions
+  val mappedList = list.map(_ * 2) // Multiply each element by 2
+  val filteredList = list.filter(_ % 2 == 0) // Filter even numbers
+  val sumOfSquares = list.map(x => x * x).sum // Sum of squares of elements
+
+  // Reduction of lists
+  val reduceLeftResult = list.reduceLeft(_ + _) // Reduce left
+  val foldLeftResult = list.foldLeft(0)(_ + _) // Fold left with initial value
+
+  println(s"ReduceLeft result: $reduceLeftResult")
+  println(s"FoldLeft result: $foldLeftResult")
 
 
 }
