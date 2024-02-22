@@ -96,5 +96,37 @@ object CollectionsIterationsExample2 extends App {
   println(s"ReduceLeft result: $reduceLeftResult")
   println(s"FoldLeft result: $foldLeftResult")
 
+ // Sequences, Vector, range
+  val seq: Seq[Int] = Seq(1, 2, 3)
+  val vector: Vector[Int] = Vector(1, 2, 3)
+  val range: Range = 1 to 5
+
+  // Combinatorial search
+  val combinations = for {
+    x <- Seq(1, 2)
+    y <- Seq('a', 'b')
+  } yield (x, y)
+
+  println("Combinations:")
+  combinations.foreach(println)
+
+  // For expressions
+  val forResult = for {
+    x <- List(1, 2, 3)
+    y <- List('a', 'b')
+  } yield (x, y)
+
+  println("For result:")
+  forResult.foreach(println)
+
+  // Sets
+  val set = Set(1, 2, 3, 4, 5)
+  val updatedSet = set + 6 // Adding an element to the set
+
+  // Maps
+  val map = Map("one" -> 1, "two" -> 2, "three" -> 3)
+  val valueForKeyTwo = map("two") // Accessing value for key "two"
+
+  println(s"Value for key 'two': $valueForKeyTwo")
 
 }

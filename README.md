@@ -19,21 +19,7 @@ This repository serves as a collection of code examples and learning resources f
 - **Syntax and Structure:** Basic Scala syntax, expressions, and control structures.
 - **Data Types and Variables:** Understanding Scala's type inference and working with different data types.
 - **Collections and Iterations:** Exploring Scala collections and iterating over them.
-Lists (Constructors of  lists, Right associativity, list Operations, list pattern matching)
-Pure data (Algebraic data types)
-Enums(domain modeling)
-Subtyping, generics
-Bounds(type bounds), Variance(covariance)
-The liskov substitution principle
-Pair, Tuples and generic methods, parameterization of sort
-Higher-order list functions, mapping, filtering(filter types)
-Reduction of lists, ReduceLeft, Foldleft, Foldright and reduceright
-Reasoning with lists, laws of concat, natural induction, structural induction
-Referential transparency
-Sequences, Vector, range,
-Combinatorial search 
-For expressions
-Sets, maps
+
 
 ## Functional Programming in Scala
 
