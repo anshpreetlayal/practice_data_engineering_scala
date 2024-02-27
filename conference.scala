@@ -20,7 +20,7 @@ object ConofManagement:
         def ask[T](p: Person, query: Viewers => T) =
             query(viewers + p)
         
-        def delegateTo[T](p: Perspn, query: Viewers => T)(using viewers: Viewers): T = 
+        def delegateTo[T](p: Person, query: Viewers => T)(using viewers: Viewers): T = 
             query(viewers + p)
 
     end Conference
