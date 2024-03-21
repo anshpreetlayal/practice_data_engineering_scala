@@ -39,4 +39,33 @@ object FRPExample extends TaskApp {
     n
   }
 
+  // Define a function to generate an ASCII representation of the Mandelbrot set
+  def generateMandelbrot(width: Int, height: Int, xRange: (Double, Double), yRange: (Double, Double)): Unit = {
+    for (y <- 0 until height) {
+      for (x <- 0 until width) {
+        val cx = xRange._1 + (xRange._2 - xRange._1) * x / width.toDouble
+        val cy = yRange._1 + (yRange._2 - yRange._1) * y / height.toDouble
+        val count = mandelbrot((cx, cy))
+        if (count == 100) print("*") else print(" ")
+      }
+      println()
+    }
+  }
+
+  def run(args: List[String]): Task[Unit] = {
+    val subject = PublishSubject[Int]
+
+    val observable = subject.map(_ * 2)
+
+    val subscription = observable.subscribe { value =>
+      println(s"Received value: $value")
+    }
+
+    Task.delay {
+      subject.onNext(1)
+      subject.onNext(2)
+      subject.onNext(3)
+      subscription.cancel() // Cancel the subscription
+    }
+  }
 }
