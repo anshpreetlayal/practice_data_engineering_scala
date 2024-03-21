@@ -42,5 +42,29 @@ object ParallelComputingExample {
     thread2.join()
   }
 
- 
+  def main(args: Array[String]): Unit = {
+    // Example of parallel computing using Future API
+    val task1 = Future {
+      println("Task 1 starting")
+      Thread.sleep(1000) // Simulate work
+      println("Task 1 completed")
+    }
+
+    val task2 = Future {
+      println("Task 2 starting")
+      Thread.sleep(1000) // Simulate work
+      println("Task 2 completed")
+    }
+
+    // Both tasks run concurrently due to time slicing
+    Thread.sleep(200) // Give some time for tasks to start
+    println("Main thread continuing while tasks are running")
+
+    // Example of atomicity using AtomicInteger
+    synchronizedIncrement()
+    println(s"Shared counter value after atomic increment: ${sharedCounter.get()}")
+
+    // Example of simulating a deadlock
+    simulateDeadlock()
+  }
 }
