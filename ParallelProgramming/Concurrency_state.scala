@@ -27,6 +27,26 @@ object FunctionalProgrammingExample {
     }
   }
 
- 
+  def main(args: Array[String]): Unit = {
+    // Stateful function example
+    println("Stateful function:")
+    println(increment()) // Output: 1
+    println(increment()) // Output: 2
+
+    // Referential transparency example
+    println("\nReferential transparency:")
+    val result = add(1, 2) // result = 3
+    val replacedResult = 3
+    println(s"Original result: $result, Replaced result: $replacedResult")
+
+    // Observer Pattern example
+    println("\nObserver Pattern:")
+    val subject = new Subject
+    val observer = new Observer {
+      override def onUpdate(): Unit = println("Update!")
+    }
+
+    subject.addObserver(observer)
+    subject.notifyObservers() // Output: "Update!"
   }
 }
