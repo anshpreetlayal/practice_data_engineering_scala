@@ -46,3 +46,68 @@ def addToTotal(x: Int): Int = {
   total
 } // Not referentially transparent due to mutable state
 
+// Packages in Scala
+
+package com.example
+
+class MyClass {
+  // Class definition
+}
+
+object Main {
+  def main(args: Array[String]): Unit = {
+    val myClass = new MyClass
+    println(myClass)
+  }
+}
+
+// Subtyping and Generics
+
+trait Animal {
+  def speak(): Unit
+}
+
+class Dog extends Animal {
+  override def speak(): Unit = println("Woof!")
+}
+
+class Cat extends Animal {
+  override def speak(): Unit = println("Meow!")
+}
+
+class AnimalList[A <: Animal](val animals: List[A]) {
+  def makeAllSpeak(): Unit = {
+    animals.foreach(_.speak())
+  }
+}
+
+val animals = List(new Dog, new Cat)
+val animalList = new AnimalList(animals)
+animalList.makeAllSpeak()
+
+// Bounds (Type Bounds) in Scala
+
+class Container[T <: Comparable[T]](val value: T) {
+  def compare(other: T): Boolean = value.compareTo(other) == 0
+}
+
+// Covariance
+class CovariantContainer[+T](val value: T) {
+  def getValue: T = value
+}
+
+// Contravariance
+trait Comparator[-T] {
+  def compare(a: T, b: T): Int
+}
+
+// Variance (Covariance) in Scala
+
+class Container[+A](val elem: A) // Covariant container
+
+def printAnimalName(container: Container[Animal]): Unit = println(container.elem.getClass.getSimpleName)
+
+val dogContainer: Container[Dog] = new Container[Dog](new Dog())
+printAnimalName(dogContainer) // Outputs "Dog"
+
+
