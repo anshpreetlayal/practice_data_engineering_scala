@@ -27,4 +27,27 @@ def combineAll[A](list: List[A])(using m: Monoid[A]): A =
   list.foldLeft(m.empty)(m.combine)
 
 val intList = List(1, 2, 3, 4, 5)
-println(combineAll(intList)) // Output: 15
+//println(combineAll(intList)) Output: 15
+
+
+// Semigroup type class
+trait Semigroup[A] {
+  def combine(x: A, y: A): A
+}
+
+// Semigroup instance for integers
+given Semigroup[Int] with {
+  def combine(x: Int, y: Int): Int = x + y
+}
+
+// Semigroup instance for strings
+given Semigroup[String] with {
+  def combine(x: String, y: String): String = x + y
+}
+
+// Usage
+def combineAll[A](list: List[A])(using s: Semigroup[A]): A =
+  list.reduce(s.combine)
+
+val intList = List(1, 2, 3, 4, 5)
+//println(combineAll(intList)) Output: 15
