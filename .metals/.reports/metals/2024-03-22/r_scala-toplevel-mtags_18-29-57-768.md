@@ -1,4 +1,4 @@
-//Implicit Classes for Retroactive Extension:
+error id: file:///C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/Digression.scala:[1168..1169) in Input.VirtualFile("file:///C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/Digression.scala", "//Implicit Classes for Retroactive Extension:
 
 // Existing type
 case class Person(name: String, age: Int)
@@ -26,8 +26,9 @@ val area: Double = rectangle // Implicit conversion to calculate area
 println(area) // Output: 50.0
 
 
-//Retroactive Extension for String:
-
+Retroactive Extension for String:
+scala
+Copy code
 // Retroactively extending String with a new method
 implicit class StringExtension(str: String) {
   def repeat(n: Int): String = str * n
@@ -35,6 +36,7 @@ implicit class StringExtension(str: String) {
 
 val hello = "Hello, "
 println(hello.repeat(3)) // Output: Hello, Hello, Hello,
+Here, StringExtension is an implicit class that adds a repeat method to the String class, enabling you to repeat a string multiple times.
 
 //Retroactive Extension for List:
 
@@ -44,4 +46,11 @@ implicit class ListExtension[T](list: List[T]) {
 }
 
 val numbers = List(1, 2, 3, 4, 5)
-println(numbers.secondOption) // Output: Some(2)
+println(numbers.secondOption) // Output: Some(2)")
+file:///C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/Digression.scala
+file:///C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/Digression.scala:39: error: expected identifier; obtained comma
+Here, StringExtension is an implicit class that adds a repeat method to the String class, enabling you to repeat a string multiple times.
+                                                                                        ^
+#### Short summary: 
+
+expected identifier; obtained comma
