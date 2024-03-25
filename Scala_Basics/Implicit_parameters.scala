@@ -80,3 +80,69 @@ def increment(implicit adder: Int => Int): Int = adder(0)
 val result = increment // No need to explicitly pass the implicit adder function
 println(result) // Output: 1
 
+// Ad-hoc Polymorphism
+trait Show[A] {
+  def show(value: A): String
+}
+
+object Show {
+  def apply[A](implicit show: Show[A]): Show[A] = show
+
+  implicit val intShow: Show[Int] = (value: Int) => value.toString
+  implicit val stringShow: Show[String] = (value: String) => value
+}
+
+def printShow[A](value: A)(implicit ev: Show[A]): Unit = {
+  println(ev.show(value))
+}
+
+printShow(42) // Output: 42
+printShow("Hello, Scala!") // Output: Hello, Scala!
+
+// Given Instances
+trait Show[A] {
+  def show(value: A): String
+}
+
+object Show {
+  def apply[A](implicit show: Show[A]): Show[A] = show
+
+  // Implicit conversion for numeric types
+  implicit def numericShow[A: Numeric]: Show[A] = (value: A) => value.toString
+
+  // Implicit conversion for strings
+  implicit val stringShow: Show[String] = (value: String) => value
+
+  // Implicit conversion for Option[A] if A has a Show instance
+  implicit def optionShow[A: Show]: Show[Option[A]] = {
+    case Some(a) => s"Option(${Show[A].show(a)})"
+    case None    => "None"
+  }
+}
+
+val opt: Option[Int] = Some(42)
+println(Show[Option[Int]].show(opt)) // Output: Option(42)
+
+// Conditional Instances
+trait Show[A] {
+  def show(value: A): String
+}
+
+object Show {
+  def apply[A](implicit show: Show[A]): Show[A] = show
+
+  // Implicit conversion for lists of numeric types
+  implicit def listNumericShow[A: Numeric]: Show[List[A]] = (list: List[A]) => {
+    list.map(_.toString).mkString(", ")
+  }
+
+  // Implicit conversion for lists of strings
+  implicit val listStringShow: Show[List[String]] = (list: List[String]) => {
+    list.mkString(", ")
+  }
+}
+
+val intList: List[Int] = List(1, 2, 3)
+val stringList: List[String] = List("Scala", "is", "awesome")
+
+println(Show[List[Int]].show(intList)) // Output: 1, 2, 3
