@@ -30,3 +30,47 @@ val account2 = Account(102, 500.0)
 
 // Perform a type-safe transfer between accounts
 performTransfer(account1, account2, 200.0)
+
+
+
+
+
+// Define a sealed trait for shapes
+sealed trait Shape
+
+// Define case classes for different shapes
+case class Circle(radius: Double) extends Shape
+case class Rectangle(width: Double, height: Double) extends Shape
+case class Square(side: Double) extends Shape
+
+// Define a type class for calculating area
+trait AreaCalculator[T] {
+  def area(shape: T): Double
+}
+
+// Define implicit instances of the AreaCalculator type class for each shape
+given AreaCalculator[Circle] with {
+  def area(circle: Circle): Double = math.Pi * circle.radius * circle.radius
+}
+
+given AreaCalculator[Rectangle] with {
+  def area(rectangle: Rectangle): Double = rectangle.width * rectangle.height
+}
+
+given AreaCalculator[Square] with {
+  def area(square: Square): Double = square.side * square.side
+}
+
+// Define a function to calculate the area based on the shape's type
+def calculateArea[T](shape: T)(using calculator: AreaCalculator[T]): Double = {
+  calculator.area(shape)
+}
+
+// Example usage
+val circle = Circle(5.0)
+val rectangle = Rectangle(3.0, 4.0)
+val square = Square(2.0)
+
+println("Area of Circle: " + calculateArea(circle))
+println("Area of Rectangle: " + calculateArea(rectangle))
+println("Area of Square: " + calculateArea(square))
