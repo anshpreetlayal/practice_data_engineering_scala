@@ -1,3 +1,25 @@
+file:///C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/monads_and_monoids.scala
+### dotty.tools.dotc.core.TypeError$$anon$1: Toplevel definition fibonacci is defined in
+  C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/infifnite_sequences.scala
+and also in
+  C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/infinite_sequences.scala
+One of these files should be removed from the classpath.
+
+occurred in the presentation compiler.
+
+presentation compiler configuration:
+Scala version: 3.3.0
+Classpath:
+<HOME>\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala3-library_3\3.3.0\scala3-library_3-3.3.0.jar [exists ], <HOME>\AppData\Local\Coursier\cache\v1\https\repo1.maven.org\maven2\org\scala-lang\scala-library\2.13.10\scala-library-2.13.10.jar [exists ]
+Options:
+
+
+
+action parameters:
+offset: 1363
+uri: file:///C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/monads_and_monoids.scala
+text:
+```scala
 sealed trait Maybe[+A]
 case class Just[A](value: A) extends Maybe[A]
 case object Nothing extends Maybe[Nothing]
@@ -49,7 +71,7 @@ given Monoid[String] with {
 }
 
 // Define a function to combine elements of a list using Monoid
-def combineAll[A](list: List[A])(using m: Monoid[A]): A =
+def combineAll[A](list: List[A])(u@@sing m: Monoid[A]): A =
   list.foldLeft(m.empty)(m.combine)
 
 // Usage examples
@@ -60,3 +82,20 @@ println(s"Combined Integers: $combinedInt") // Output: Combined Integers: 15
 val stringList = List("Hello, ", "Scala, ", "World!")
 val combinedString = combineAll(stringList)
 println(s"Combined Strings: $combinedString") // Output: Combined Strings: Hello, Scala, World!
+
+```
+
+
+
+#### Error stacktrace:
+
+```
+
+```
+#### Short summary: 
+
+dotty.tools.dotc.core.TypeError$$anon$1: Toplevel definition fibonacci is defined in
+  C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/infifnite_sequences.scala
+and also in
+  C:/Users/anshp/IdeaProjects/practice_data_engineering_scala/Scala_Basics/infinite_sequences.scala
+One of these files should be removed from the classpath.
