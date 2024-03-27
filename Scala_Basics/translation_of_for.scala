@@ -27,3 +27,50 @@ val cityGroups = for {
   val residents = people.filter(_.city == city).map(_.name)
   (city, residents)
 }
+
+// Translated version using map, distinct, and flatMap
+val cityGroupsTranslated = people
+  .map(_.city)
+  .distinct
+  .map { city =>
+    val residents = people.filter(_.city == city).map(_.name)
+    (city, residents)
+  }
+
+// Working with Option using a for comprehension
+val maybeAge: Option[Int] = Some(30)
+val ageStatus = for {
+  age <- maybeAge
+} yield {
+  if (age >= 25) "Adult" else "Child"
+}
+
+// Translated version using map and getOrElse
+val ageStatusTranslated = maybeAge.map { age =>
+  if (age >= 25) "Adult" else "Child"
+}.getOrElse("Unknown")
+
+// Handling Errors with Either using a for comprehension
+def divide(a: Int, b: Int): Either[String, Int] =
+  if (b != 0) Right(a / b) else Left("Division by zero")
+
+val divisionResult = for {
+  result <- divide(10, 2)
+} yield s"Result: $result"
+
+// Translated version using map and getOrElse
+val divisionResultTranslated = divide(10, 2).map(result => s"Result: $result").getOrElse("Error")
+
+// Performing actions using a for comprehension
+val actions = for {
+  _ <- Some(println("Start"))
+  _ <- Some(println("Middle"))
+  _ <- Some(println("End"))
+} yield ()
+
+// Translated version using flatMap and foreach
+val actionsTranslated = println("Start").flatMap { _ =>
+  println("Middle").flatMap { _ =>
+    println("End")
+  }
+}
