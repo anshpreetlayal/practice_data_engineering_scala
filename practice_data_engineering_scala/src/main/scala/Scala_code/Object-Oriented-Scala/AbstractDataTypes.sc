@@ -21,7 +21,7 @@ object AbstractDataTypes{
   override def play(): Unit = println("fire!")
 
   def main(args: Array[String]): Unit = {
-    val cs = new shooter
+    val cs = new Shooter
     println(cs.runningPlatform)
   }
 }
