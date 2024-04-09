@@ -29,6 +29,12 @@ object ListsDemo{
   val total = aList.reduce(_+_)
 
 
+
+
+  /// map - transforming a list by applying a function on every element
+  val tenxList = aList.map(x => x * 10)
+  val scalaList = aList.map(x => s"Scala $x")
+
   def main(args: Array[String]): Unit = {
     println(aList)
     println(biggerList)
