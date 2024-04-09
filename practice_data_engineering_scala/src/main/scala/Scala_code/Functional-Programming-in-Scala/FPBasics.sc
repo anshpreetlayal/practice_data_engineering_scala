@@ -37,9 +37,23 @@ object FPBasics{
   // Int => Int can be expressed as a trait than has an apply(Int): Int
   // (string, Int) => String can be expressed as a trait that has an apply(string, int): Int
 
+  trait MyStringIntFunction {
+    def apply(s: String, i: Int): String
+  }
 
+  val myCombinator = new MyStringIntFunction {
+    override def apply(s: String, i: Int) =
+      s"$s, ($i)"
+  }
 
+  val doubler_v3 = new Function1[Int, Int]{
+    override def apply(arg: Int) = arg * 2
+  }
 
+  val myCombinator_v2 = new Function2[String, Int, String]{
+    override  def apply(s: String, i: Int)=
+      s"$s, ($i)"
+  }
   def main(args: Array[String]): Unit = {
    println(danielStatement)
     println(danielStatement_v2)
