@@ -35,6 +35,16 @@ object ListsDemo{
   val tenxList = aList.map(x => x * 10)
   val scalaList = aList.map(x => s"Scala $x")
 
+
+
+  // filter - transformas a lsit by just leeping the oitems satisfying a boolean function
+  val evenNumbers = aList.filter(x => x % 2 == 0)
+
+
+  // higher-order functions = take other functions as arguments/ return function as results
+  // flatmap = transforms a list by appling the function to every element + combining the mini-lists obtained
+  val expandedList = aList.flatMap(x => List(x, x + 1))
+
   def main(args: Array[String]): Unit = {
     println(aList)
     println(biggerList)
