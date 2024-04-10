@@ -27,6 +27,21 @@ object TuplesMapsDemo{
 
   // remove a key
   val noDaniel = phonebook - "Daniel"
+
+  // lists of tuples <-> maps
+  val listOfEntries = List(
+    "Jim" -> 555,
+    "Daniel" -> 921,
+    "Jane" -> 123
+  )
+
+  val phonebook_v2 = listOfEntries.toMap
+  val listOfEntries_v2 = phonebook.toList
+
+  // set of keys
+  val allNames = phonebook.keySet
+  val allNumbers = phonebook.values.toList
+
   def main(args: Array[String]): Unit = {
 
   }
