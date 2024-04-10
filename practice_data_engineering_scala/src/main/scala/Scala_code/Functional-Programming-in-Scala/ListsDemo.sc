@@ -94,7 +94,13 @@ object ListsDemo{
      c <- colors
    } yield s"$n-$c" // same as the above implementation
 
+   // exercise
+   // Generate a checkerboeard from the numbers 1 to 8 and the lettes A-H
 
+   val chessboeard = for {
+     letter <- ('A' to 'H').toList
+     number <- (1 to 8).toList
+   } yield s"$letter$number"
   def main(args: Array[String]): Unit = {
     println(aList)
     println(biggerList)
@@ -108,6 +114,7 @@ object ListsDemo{
 
     println(repeatScala(List(1,2,5)))
     println(generateN(100))
+    println(chessboeard)
 
   }
 }
