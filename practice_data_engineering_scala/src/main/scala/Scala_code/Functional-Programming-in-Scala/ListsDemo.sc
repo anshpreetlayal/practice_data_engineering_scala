@@ -45,6 +45,41 @@ object ListsDemo{
   // flatmap = transforms a list by appling the function to every element + combining the mini-lists obtained
   val expandedList = aList.flatMap(x => List(x, x + 1))
 
+
+  /**
+   * Exercises
+   * 1. Take a list of numbers, return a list of "scala " repeated that many times
+   * 2. Generate the first n numbers in a list with a recursive function
+   * 3. from that list, return just the prime numbers
+   * take a list of numbers, return a list of all the digits of those numbers
+   *
+   */
+
+
+  def concatenateN(string: String, n: Int): String =
+    if (n <= 0) ""
+    else string + concatenateN(string, n - 1)
+
+  def isPrime(n: Int): Boolean = {
+    def testDivisors(d: Int): Boolean =
+      if (d > n / 2) true
+      else if (n % d == 0) false
+      else testDivisors(d + 1)
+
+    if (n <= 0) false // dont support negative numbers
+    else if (n == 1) false // 1 is not a prime
+    else testDivisors(2)
+  }
+  def repeatScala(numbers: List[Int]): List[String] =
+    numbers.map(n => concatenateN("Scala", n))
+
+  def generateN(n: Int): List[Int]=
+    if (n <= 0) List()
+    else generateN(n - 1) :+ n
+
+  def primeOutOfFirstNNumbers(n: Int): List[Int] =
+    generateN(n).filter(x => isPrime(x))
+
   def main(args: Array[String]): Unit = {
     println(aList)
     println(biggerList)
@@ -52,6 +87,12 @@ object ListsDemo{
     println(stringRep)
     println(stringRep_v2)
     println(total)
+    println(tenxList)
+    println(scalaList)
+    println(expandedList)
+
+    println(repeatScala(List(1,2,5)))
+    println(generateN(100))
 
   }
 }
