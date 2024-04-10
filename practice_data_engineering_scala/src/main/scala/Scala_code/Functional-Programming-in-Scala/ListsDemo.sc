@@ -80,6 +80,21 @@ object ListsDemo{
   def primeOutOfFirstNNumbers(n: Int): List[Int] =
     generateN(n).filter(x => isPrime(x))
 
+
+
+
+  // example
+  val numbers = List(1,2,3,4)
+  val colors = List("Black", "whitee", "blue")
+
+  val combinations = numbers.flatMap(n => colors.map(c => s"$n-$c"))
+   // for comprehensions
+   val combinations_v2 = for {
+     n <- numbers
+     c <- colors
+   } yield s"$n-$c" // same as the above implementation
+
+
   def main(args: Array[String]): Unit = {
     println(aList)
     println(biggerList)
