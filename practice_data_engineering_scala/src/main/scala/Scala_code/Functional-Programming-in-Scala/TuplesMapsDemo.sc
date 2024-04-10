@@ -16,6 +16,17 @@ object TuplesMapsDemo{
     "Jane" -> 123
   )
 
+  // core methods
+  // keys exists in the map
+  val hasDaniel = phonebook.contains("Daniel") // true
+  val danielsNumber = phonebook("Daniel")
+
+  // add a new pair - returns a new map
+  val newPair = "mary" -> 678
+  val newPhonebook = phonebook + newPair
+
+  // remove a key
+  val noDaniel = phonebook - "Daniel"
   def main(args: Array[String]): Unit = {
 
   }
