@@ -8,7 +8,7 @@ object TuplesMapsDemo{
   // tuples of 2 elements have some syntax sugar
   val aTuple_v2 = 2 -> "rock the jvm" // same as aTuple
 
-  // maps: keys -> vallues, unique keys
+  // maps: keys -> values, unique keys
   val aMap = Map()
   val phonebook = Map(
     "Jim" -> 555,
